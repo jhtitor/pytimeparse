@@ -34,8 +34,8 @@ kinds of time expressions.
 import re
 
 SIGN        = r'(?P<sign>[+|-])?'
-#YEARS      = r'(?P<years>\d+)\s*(?:ys?|yrs?.?|years?)'
-#MONTHS     = r'(?P<months>\d+)\s*(?:mos?.?|mths?.?|months?)'
+YEARS      = r'(?P<years>\d+)\s*(?:ys?|yrs?.?|years?)'
+MONTHS     = r'(?P<months>\d+)\s*(?:mos?.?|mons?.?|mths?.?|months?)'
 WEEKS       = r'(?P<weeks>[\d.]+)\s*(?:w|wks?|weeks?)'
 DAYS        = r'(?P<days>[\d.]+)\s*(?:d|dys?|days?)'
 HOURS       = r'(?P<hours>[\d.]+)\s*(?:h|hrs?|hours?)'
@@ -71,10 +71,10 @@ TIMEFORMATS = [
         DAYCLOCK=DAYCLOCK),
     r'{SECCLOCK}'.format(
         SECCLOCK=SECCLOCK),
-    #r'{YEARS}'.format(
-        #YEARS=YEARS),
-    #r'{MONTHS}'.format(
-        #MONTHS=MONTHS),
+    r'{YEARS}'.format(
+        YEARS=YEARS),
+    r'{MONTHS}'.format(
+        MONTHS=MONTHS),
     ]
 
 COMPILED_SIGN = re.compile(r'\s*' + SIGN + r'\s*(?P<unsigned>.*)$')
@@ -82,8 +82,8 @@ COMPILED_TIMEFORMATS = [re.compile(r'\s*' + timefmt + r'\s*$', re.I)
                         for timefmt in TIMEFORMATS]
 
 MULTIPLIERS = dict([
-        #('years',  60 * 60 * 24 * 365),
-        #('months', 60 * 60 * 24 * 30),
+        ('years',  60 * 60 * 24 * 365),
+        ('months', 60 * 60 * 24 * 30),
         ('weeks',   60 * 60 * 24 * 7),
         ('days',    60 * 60 * 24),
         ('hours',   60 * 60),
